@@ -229,7 +229,7 @@ public class BitcoinSerializer extends MessageSerializer {
             return new UTXOsMessage(params, payloadBytes);
         } else if (command.equals("getutxos")) {
             return new GetUTXOsMessage(params, payloadBytes);
-        } else if(params.allowMoreMessages() && (command.equals("sendheaders") || command.equals("dsq") || command.equals("govsync"))) {
+        } else if(params.allowMoreMessages()) {
             return new IgnoreThisMessage(params);
         } else {
             log.warn("No support for deserializing message with name {}", command);
